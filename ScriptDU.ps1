@@ -19,7 +19,8 @@ function Get-BiggestFile
         [Parameter(Mandatory=$false,
                    ValueFromPipelineByPropertyName=$true,
                    Position=0)]
-        [Alias('cn', 'ComputerName', 'Name', 'Names')]
+        [Alias('cn', 'ComputerName', 'Name', 'Names')]	
+	[String[]]
         $ComputerNames = @($env:COMPUTERNAME),
 
         # Param2 Path to the file of the start of the search
@@ -27,6 +28,7 @@ function Get-BiggestFile
                    ValueFromPipelineByPropertyName=$true,
                    Position=0)]
         [Alias('Path', 'File', 'p')]
+	[String]
         $FilesPath = 'C:\Users\',
 
         # Param3 Number of files returned
@@ -34,6 +36,7 @@ function Get-BiggestFile
                    ValueFromPipelineByPropertyName=$true,
                    Position=0)]
         [Alias('n', 'Number')]
+	[int]
         $NumberOfFiles = 10,
 
         # SwitchParam1 If the test of the conections should be executed
@@ -105,7 +108,7 @@ function Get-BiggestFile
                 )
             }
             # Making alias for property length because it gots swapped out with length of the Array later on
-            $OneOutput | Add-Member -MemberType AliasProperty -Name Size -Value Length
+            $OneOutput | Add-Member -MemberType AliasProperty -Name Size -Value Length -Force
             forEach ($line in $OneOutput) {
                 # Getting wanted properties of the output
                 $format = @{
