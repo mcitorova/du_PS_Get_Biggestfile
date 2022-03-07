@@ -1,13 +1,23 @@
 ﻿<#
 .Synopsis
-   Short description
+   Get 10 biggest files in the path
 .DESCRIPTION
-   Long description
+   Get requred required amount of the biggest files in the path
+   of supplied Computer names
+   The outpust is displayed as hostname, name, length, directory, creationtime
 .EXAMPLE
-   Example of how to use this cmdlet
+   PS> Get-BiggestFile 
+   CompuerName	Name		Length	Directory		CreationTime
+   Host		file1.txt 	55555 	C:\Users\Documents 	3/7/2022 12:00:00 PM
 .EXAMPLE
-   Another example of how to use this cmdlet
-#>
+   PS> Get-BiggestFile -Name "Server1" -FilePath "C:\custom\path"
+   CompuerName	Name		Length	Directory	CreationTime
+   Server1 	file1.txt 	55555 	C:\custom\path 	3/7/2022 12:00:00 PM
+.NOTES
+   Zadanie 6.
+   miroslava.citorova@t-systems.com
+   dominika.bernatova@telekom.com
+   #>
 
 function Get-BiggestFile
 {
